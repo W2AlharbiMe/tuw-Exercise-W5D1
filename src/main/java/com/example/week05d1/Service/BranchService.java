@@ -3,8 +3,11 @@ package com.example.week05d1.Service;
 import com.example.week05d1.Api.ApiException;
 import com.example.week05d1.Model.Branch;
 import com.example.week05d1.Model.Branch;
+import com.example.week05d1.Model.Merchant;
 import com.example.week05d1.Repository.BranchRepository;
+import com.example.week05d1.Repository.MerchantRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -15,6 +18,7 @@ import java.util.List;
 public class BranchService {
 
     private final BranchRepository branchRepository;
+    private final MerchantRepository merchantRepository;
 
 
 
@@ -89,4 +93,27 @@ public class BranchService {
     }
 
 
+    public LinkedHashMap<String, Object> assignMerchantToBranch(Integer merchantId, Integer branchId) {
+        Merchant merchant = merchantRepository.findMerchantById(merchantId);
+
+        if (merchant == null) {
+            throw new ApiException("merchant not found");
+        }
+
+        Branch branch = branchRepository.findBranchById(branchId);
+
+        if(branch == null) {
+            throw new ApiException("branch not found");
+        }
+
+        branch.setMerchant(merchant);
+
+        branchRepository.save(branch);
+
+        LinkedHashMap<String, Object> res = new LinkedHashMap<>();
+
+        res.put("message", "assigned");
+        res.put("merchant", merchant);
+        return res;
+    }
 }

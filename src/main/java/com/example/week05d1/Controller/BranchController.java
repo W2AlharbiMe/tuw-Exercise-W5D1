@@ -44,4 +44,8 @@ public class BranchController {
         return ResponseEntity.ok(branchService.delete(id));
     }
 
+    @PutMapping("/assign/{merchantId}/{branchId}")
+    public ResponseEntity<LinkedHashMap<String, Object>> assign(@PathVariable Integer merchantId, @PathVariable Integer branchId) {
+        return ResponseEntity.ok(branchService.assignMerchantToBranch(merchantId, branchId));
+    }
 }
