@@ -19,6 +19,7 @@ public class Branch {
 
 
     private Integer number;
+
     private String area;
 
     @ManyToOne

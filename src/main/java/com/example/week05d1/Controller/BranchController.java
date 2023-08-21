@@ -30,12 +30,12 @@ public class BranchController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<LinkedHashMap<String, Object>> add(@RequestBody @Valid Branch merchant) {
-        return ResponseEntity.ok(branchService.add(merchant));
+    public ResponseEntity<LinkedHashMap<String, Object>> add(@RequestBody @Valid Branch branch) {
+        return ResponseEntity.ok(branchService.add(branch));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<LinkedHashMap<String, Object>> update(@PathVariable Integer id, @RequestBody @Valid Branch merchant) {
+    public ResponseEntity<LinkedHashMap<String, Object>> update(@PathVariable Integer id, @RequestBody Branch merchant) {
         return ResponseEntity.ok(branchService.update(id, merchant));
     }
 

@@ -42,10 +42,12 @@ public class BranchService {
 
     public LinkedHashMap<String, Object> add(Branch branch) {
 
+        Branch branch1 = branchRepository.save(branch);
+
         LinkedHashMap<String, Object> res = new LinkedHashMap<>();
 
         res.put("message", "saved");
-        res.put("branch", branchRepository.save(branch));
+        res.put("branch", branch1);
 
         return res;
     }
