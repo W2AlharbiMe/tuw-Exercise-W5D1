@@ -35,4 +35,11 @@ public class CustomerController {
     public ResponseEntity<Customer> deleteCustomer(@PathVariable Integer id) {
         return ResponseEntity.ok(customerService.delete(id));
     }
+
+    @PutMapping("/assign/customer-to-merchant/{customerId}/{merchantId}")
+    public ResponseEntity<Customer> assignCustomerToMerchant(@PathVariable Integer customerId, @PathVariable Integer merchantId) {
+        return ResponseEntity.ok(customerService.assignCustomerToMerchant(customerId, merchantId));
+    }
+
+
 }

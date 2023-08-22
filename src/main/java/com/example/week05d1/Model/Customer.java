@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -22,4 +24,7 @@ public class Customer {
     @PrimaryKeyJoinColumn
     private CustomerDetail customerDetail;
 
+    @ManyToMany
+    @JsonIgnore
+    private Set<Merchant> merchants;
 }

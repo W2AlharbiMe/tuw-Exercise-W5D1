@@ -24,4 +24,8 @@ public class Merchant {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "merchant")
     private Set<Branch> branches;
 
+
+    @ManyToMany(mappedBy = "merchants")
+    private Set<Customer> customers;
+
 }
